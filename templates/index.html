@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<div class="header">
+    <a href="#default" class="logo">ToDoNow</a>
+    <div class="right">
+        <a class="active" href="#home">My List</a>
+        <label for="dropdown">Login</label>
+        <select id="dropdown" name="LoginOptions"> <!-- Customize this later-->
+            <option value="Guest">Guest</option>
+            <option value="Admin">Admin</option>
+        </select>
+    </div>
+</div>
+
+<!-- <div class="content">
+    <table>
+        <tr>
+            <th>Task</th>
+            <th>Added</th>
+            <th>Actions</th>
+        </tr>
+        {% for task in tasks %}
+        <tr>
+            <td>{{task.content}}</td>
+            <td>{{task.date_created.date()}}</td>
+            <td>
+                <a href="/delete/{{task.id}}">delete</a>
+                <a href="/update/{{task.id}}">update</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    -->
+    
+<div class="form">
+    <form class="inform" action="/" method="POST">
+        <input id="text" type="text" title="content1" name="input_content" id="content1" required>
+        <input id="add" type="submit" value="Add Task">
+    </form>
+</div>
+
+
+<div class="content">
+    {%for task in tasks%}
+    <div class="cards">
+         <div class="Task" name="Task">{{task.content}}</div>
+        <div class="Actions">
+            <a href="/update/{{task.id}}" title="Update"><img id="update" src="static/images/update.svg" alt="Update"></a>
+            <a href="/delete/{{task.id}}" title="Delete"><img id="delete" src="static/images/delete.svg" alt="Delete"></a>
+        <div class="DateAndTime">
+            <div class="Date">{{task.date_created.strftime('%b %d, %Y')}}</div>
+            <div class="Time">{{task.date_created.strftime('%H:%M')}}</div>
+        </div>
+        </div>
+    </div>
+    {%endfor%}
+</div>
+{% endblock %}
+

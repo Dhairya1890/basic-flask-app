@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Update<title>
+    <style>
+        .form{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: baseline;
+            gap: 10px;
+            margin-top: 50px;
+        }
+        #add{
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+        #text{
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    width: 300px;
+}
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="header">
+    <a href="#default" class="logo">ToDoNow</a>
+    <div class="right">
+        <a class="active" href="#home">My List</a>
+        <label for="dropdown">Login</label>
+        <select id="dropdown" name="LoginOptions"> <!-- Customize this later-->
+            <option value="Guest">Guest</option>
+            <option value="Admin">Admin</option>
+        </select>
+    </div>
+</div>
+
+<div class="content">
+    <form action="/update/{{task.id}}" method="POST">
+        <input id="text" type="text" title="content1" name="input_content" id="content1" value="{{task.content}}" required>
+        <input id="add" type="submit" value="Update">
+    </form>
+</div>
+{% endblock %}
+
